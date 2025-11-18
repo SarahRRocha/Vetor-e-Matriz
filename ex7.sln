@@ -1,22 +1,38 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ex7", "ex7\ex7.csproj", "{FDD21A3D-21ED-419A-B22E-0BF2F9DD41B8}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FDD21A3D-21ED-419A-B22E-0BF2F9DD41B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FDD21A3D-21ED-419A-B22E-0BF2F9DD41B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FDD21A3D-21ED-419A-B22E-0BF2F9DD41B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FDD21A3D-21ED-419A-B22E-0BF2F9DD41B8}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-EndGlobal
+using System;
+
+namespace MyApp
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            const int N_lin = 3, N_col = 3;
+            int[,] mat = new int[N_lin, N_col];
+            int l, c;
+
+            Console.WriteLine("Cadastrando dados na matriz\n");
+            Console.WriteLine("Entre com o valor em cada posição da matriz:\n");
+            for (l = 0; l < N_lin; l++)
+            {
+                for (c = 0; c < N_col; c++)
+                {
+                    Console.Write($"mat[{l},{c}] = ");
+                    mat[l, c] = int.Parse(Console.ReadLine());
+                }
+            }
+
+            Console.WriteLine("\nExibindo os dados da matriz:\n");
+
+            for (l = 0; l < N_lin; l++)
+            {
+                for (c = 0; c < N_col; c++)
+                {
+                    Console.Write($"{mat[l, c]} ");
+                }
+                Console.WriteLine(); 
+            }
+
+            Console.ReadKey();
+        }
+    }
+}
