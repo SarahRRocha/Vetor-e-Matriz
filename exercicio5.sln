@@ -1,22 +1,34 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "exercicio5", "exercicio5\exercicio5.csproj", "{DC5855CB-3D28-4D9D-A718-52FB979CC500}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DC5855CB-3D28-4D9D-A718-52FB979CC500}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DC5855CB-3D28-4D9D-A718-52FB979CC500}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DC5855CB-3D28-4D9D-A718-52FB979CC500}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DC5855CB-3D28-4D9D-A718-52FB979CC500}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-EndGlobal
+using System;
+
+namespace MyApp
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int i;
+            const int tam = 10;
+            string[] times = new string [tam];
+
+            Console.WriteLine("*** Times de Futebol ***\n");
+
+            for (i = 0; i < tam; i++)
+            {
+                Console.Write("Nome do {0}ª time: ", i + 1);
+                times[i] = Console.ReadLine();
+            }
+
+            Console.WriteLine("\n *** Times cadastrados no Vetor ***\n");
+            exibirDados(times);
+
+            Console.ReadKey();
+        }
+
+        static void exibirDados(string[] t)
+        {
+            for (int x = 0; x < t.Length; x++)
+                Console.WriteLine("{0} ª time: {1}", x + 1, t[x]);
+        }
+
+    }
+}
