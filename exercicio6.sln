@@ -1,22 +1,36 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "exercicio6", "exercicio6\exercicio6.csproj", "{05268939-568F-4F87-9004-096538A24DE2}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{05268939-568F-4F87-9004-096538A24DE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{05268939-568F-4F87-9004-096538A24DE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{05268939-568F-4F87-9004-096538A24DE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{05268939-568F-4F87-9004-096538A24DE2}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-EndGlobal
+using System;
+
+namespace MyApp
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int i;
+            const int tam = 5;
+            string[] cursos = new string[tam];
+
+            Console.WriteLine("***Cursos Técnicos***\n");
+
+            cursos = cadastroCursos();
+
+            Console.WriteLine("\n *** Cursos cadastrados no Vetor ***\n");
+            for (int x = 0; x < cursos.Length; x++)
+                Console.WriteLine("{0}º Curso: {1}", x + 1, cursos[x]);
+
+            Console.ReadKey();
+        }
+        static string[] cadastroCursos()
+        {
+            string[] vetorAuxiliar = new string[5];
+
+            for (int x = 0; x < 5; x++)
+            {
+                Console.WriteLine("Digite o nome do {0}ª Curso: ", x + 1);
+                vetorAuxiliar[x] = Console.ReadLine();
+            }
+
+            return vetorAuxiliar;
+        }
+    }
+}
