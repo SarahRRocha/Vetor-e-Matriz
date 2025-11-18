@@ -1,22 +1,78 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ex12", "ex12\ex12.csproj", "{A5FA904F-6BF3-4093-8C63-6A17FB2EFBB4}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A5FA904F-6BF3-4093-8C63-6A17FB2EFBB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A5FA904F-6BF3-4093-8C63-6A17FB2EFBB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A5FA904F-6BF3-4093-8C63-6A17FB2EFBB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A5FA904F-6BF3-4093-8C63-6A17FB2EFBB4}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-EndGlobal
+using System;
+using System.Threading;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Random random = new Random(); 
+
+        const int QTD_COL = 3;
+        const int QTD_LIN = 3;
+
+        int[,] matriz = new int[QTD_LIN, QTD_COL];
+
+        matriz = cadastrarNumeros(QTD_LIN, QTD_COL);
+
+        Console.WriteLine("\n--------MEMORIZE--------\n");
+        exibirDados(matriz);
+
+        Thread.Sleep(5000); 
+        Console.Clear();   
+
+        int sorteioLinha = random.Next(0, QTD_LIN); 
+        int sorteioColuna = random.Next(0, QTD_COL); 
+
+        Console.Write("Qual número consta na posição: linha {0}, coluna {1} da matriz: ",
+            sorteioLinha, sorteioColuna);
+
+        int num = int.Parse(Console.ReadLine());
+
+        if (verifica(matriz[sorteioLinha, sorteioColuna], num) == true)
+        {
+            Console.WriteLine("\nParabéns! Você acertou!\n");
+        }
+        else
+        {
+            Console.WriteLine("\nQue pena! Você errou! Número correto seria: {0}\n",
+                matriz[sorteioLinha, sorteioColuna]);
+        }
+
+        exibirDados(matriz);
+        Console.ReadKey();
+    }
+
+    static int[,] cadastrarNumeros(int nLin, int nCol)
+    {
+        int[,] n = new int[nLin, nCol];
+        Random random = new Random();
+
+        for (int i = 0; i < nLin; i++)
+        {
+            for (int c = 0; c < nCol; c++)
+            {
+                n[i, c] = random.Next(0, 50);
+            }
+        }
+
+        return n;
+    }
+
+    static Boolean verifica(int numeroMatriz, int numUsuario)
+    {
+        return numeroMatriz == numUsuario ? true : false;
+    }
+
+    static void exibirDados(int[,] n)
+    {
+
+        for (int i = 0; i < n.GetLength(0); i++)
+        {
+            for (int j = 0; j < n.GetLength(1); j++)
+            {
+                Console.Write("{0:D2}\t", n[i, j]);
+            }
+            Console.WriteLine();
+        }
+    }
+}
