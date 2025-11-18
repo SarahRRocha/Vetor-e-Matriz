@@ -1,22 +1,53 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ex11", "ex11\ex11.csproj", "{E56F9D78-B4D1-4EF8-AEC2-CBB39A5584D5}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E56F9D78-B4D1-4EF8-AEC2-CBB39A5584D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E56F9D78-B4D1-4EF8-AEC2-CBB39A5584D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E56F9D78-B4D1-4EF8-AEC2-CBB39A5584D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E56F9D78-B4D1-4EF8-AEC2-CBB39A5584D5}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-EndGlobal
+using System;
+
+namespace MyApp
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            const int qtd_col = 3; 
+            const int qtd_lin = 5; 
+
+            double[,] notas = cadastrarNotas(qtd_lin, qtd_col);
+
+            Console.WriteLine("\n*** Notas cadastradas na matriz ***\n");
+            exibirDados(notas);
+
+            Console.ReadKey();
+        }
+        static double[,] cadastrarNotas(int nLin, int nCol)
+        {
+            double[,] n = new double[nLin, nCol];
+
+            for (int l = 0; l < nLin; l++)
+            {
+                Console.WriteLine($"\nNotas do {l + 1}º aluno:");
+
+                for (int c = 0; c < nCol; c++)
+                {
+                    Console.Write($" {c + 1}ª nota: ");
+                    n[l, c] = double.Parse(Console.ReadLine());
+                }
+            }
+
+            return n;
+        }
+        static void exibirDados(double[,] nt)
+        {
+            Console.WriteLine("\nAluno \t\tNota1 \t\tNota2 \t\tNota3\n");
+
+            for (int i = 0; i < nt.GetLength(0); i++)
+            {
+                Console.Write($"{i + 1}º Aluno:\t");
+
+                for (int j = 0; j < nt.GetLength(1); j++)
+                {
+                    Console.Write($"{nt[i, j]:N1}\t\t");
+                }
+
+                Console.WriteLine();
+            }
+        }
+    }
+}
